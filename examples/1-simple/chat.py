@@ -11,7 +11,7 @@ env_file = os.path.join(root_dir, '.env')
 
 async def main():
     # Load the .env file. Replace the path with the path to your .env file.
-    load_dotenv(env_file)
+    load_dotenv(env_file, override=True, verbose=True)
     deployment_name = os.environ["AZURE_OPENAI_DEPLOYMENT_NAME"]
     endpoint = os.environ["AZURE_OPENAI_ENDPOINT"]
     api_key = os.environ["AZURE_OPENAI_API_KEY"]
@@ -26,9 +26,7 @@ async def main():
 
     # Wrap your prompt in a function
     prompt = kernel.create_semantic_function("""
-    I need to understand what are the variables involved in making outstanding espresso besides
-    a good machine. For example what is the combination of roast, grind, tamp, and water temperature.
-    Include 3 practical steps to practice and improve each variable.
+    I need to understand what is the timeline of the halo universe. Start from the current year and move forward in time. Indicate main events and the timeline of the novels and games.
     """)
 
     # Run your prompt
